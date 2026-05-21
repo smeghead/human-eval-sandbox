@@ -1,0 +1,15 @@
+(ns app\q000)
+
+(defn has_close_elements [numbers threshold]
+  (loop [numbers (sort numbers)]
+    (case (count numbers)
+      0 false
+      1 false
+      (let [[fst sec & rest] numbers]
+        ;; (print (str "fst: " fst " sec: " sec " dif: " (- sec fst) " threshold: " threshold "\n"))
+        ;; (print rest)
+        ;; (print (str "cond: " (< (- sec fst) threshold) "\n" ))
+        (if (< (- sec fst) threshold)
+          true
+          (recur (next numbers)))))))
+          ;; rest だとエラーになるのはなぜ？

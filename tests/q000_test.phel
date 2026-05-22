@@ -1,6 +1,6 @@
-(ns app\q000-test
-  (:require phel\test :refer [deftest is])
-  (:require app\q000 :as q))
+(ns app.q000-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q000 :as q))
 
 (deftest test-check
   (is (= true (q/has_close_elements [1.0 2.0 3.9 4.0 5.0 2.2] 0.3)))

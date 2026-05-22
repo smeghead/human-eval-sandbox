@@ -1,4 +1,4 @@
-(ns app\q000)
+(ns app.q000)
 
 (defn has_close_elements [numbers threshold]
   (loop [numbers (sort numbers)]

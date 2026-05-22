@@ -1,4 +1,4 @@
-(ns app\q001
+(ns app.q001
   (:require phel.string))
 
 (defn separate_paren_groups [str]

@@ -1,0 +1,21 @@
+(ns app\q001-test
+  (:require phel\test :refer [deftest is])
+  (:require app\q001 :as q))
+
+(deftest test-check
+  (is (= ["(()())", "((()))", "()", "((())()())"] (q/separate_paren_groups "(()()) ((())) () ((())()())")))
+  (is (= ["()", "(())", "((()))", "(((())))"] (q/separate_paren_groups "() (()) ((())) (((())))")))
+  (is (= ["(()(())((())))"] (q/separate_paren_groups "(()(())((())))")))
+  (is (= ["()", "(())", "(()())"] (q/separate_paren_groups "( ) (( )) (( )( ))"))))
+
+;;def check(candidate):
+;;    assert candidate('(()()) ((())) () ((())()())') == [
+;;        '(()())', '((()))', '()', '((())()())'
+;;    ]
+;;    assert candidate('() (()) ((())) (((())))') == [
+;;        '()', '(())', '((()))', '(((())))'
+;;    ]
+;;    assert candidate('(()(())((())))') == [
+;;        '(()(())((())))'
+;;    ]
+;;    assert candidate('( ) (( )) (( )( ))') == ['()', '(())', '(()())']

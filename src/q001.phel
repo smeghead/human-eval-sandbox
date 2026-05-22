@@ -1,0 +1,16 @@
+(ns app\q001
+  (:require phel.string))
+
+(defn separate_paren_groups [str]
+  (loop [str (string/replace str "/[^()]/" "")
+         acc []
+         parts []
+         indent 0]
+    (if (empty? str)
+      acc
+      (let [c (string/subs str 0 1)]
+        (case c
+          "(" (recur (string/subs str 1) acc (conj parts c) (inc indent))
+          ")" (if (<= indent 1)
+                (recur (string/subs str 1) (conj acc (string/join "" (conj parts c))) [] (dec indent))
+                (recur (string/subs str 1) acc (conj parts c) (dec indent))))))))

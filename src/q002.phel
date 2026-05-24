@@ -1,0 +1,5 @@
+(ns app.q002
+  (:require phel.string))
+
+(defn truncate_number [number]
+  (% number 1))

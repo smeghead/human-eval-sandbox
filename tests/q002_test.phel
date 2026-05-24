@@ -1,0 +1,13 @@
+(ns app.q002-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q002 :as q))
+
+(deftest test-check
+  (is (= 0.5 (q/truncate_number 3.5)))
+  (is (= 0.33 (php/round (q/truncate_number 1.33) 2)))
+  (is (= 0.456 (php/round (q/truncate_number 123.456) 3))))
+
+;; def check(candidate):
+;;     assert candidate(3.5) == 0.5
+;;     assert abs(candidate(1.33) - 0.33) < 1e-6
+;;     assert abs(candidate(123.456) - 0.456) < 1e-6

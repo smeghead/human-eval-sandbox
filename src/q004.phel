@@ -1,0 +1,7 @@
+(ns app.q004
+  (:require phel.string))
+
+(defn mean_absolute_deviation [vals]
+  (let [average (/ (sum vals) (count vals))
+        sum-diff (sum (map #(abs (- % average)) vals))]
+    (/ sum-diff (count vals))))

@@ -1,0 +1,11 @@
+(ns app.q003
+  (:require phel.string))
+
+(defn below_zero [points]
+  (loop [points points
+         acc 0]
+    (if (empty? points)
+      (< acc 0)
+      (if (< acc 0)
+        true
+        (recur (rest points) (+ acc (first points)))))))

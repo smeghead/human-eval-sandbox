@@ -1,0 +1,14 @@
+(ns app.q005
+  (:require phel.string))
+
+(defn intersperse [vals delimiter]
+  (loop [vals vals
+         acc []]
+    (if (empty? vals)
+      acc
+      (recur
+        (rest vals)
+        (if (empty? acc)
+          [(first vals)]
+          (concat acc [delimiter (first vals)]))))))
+                        

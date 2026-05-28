@@ -1,0 +1,14 @@
+(ns app.q005-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q005 :as q))
+
+(deftest test-check
+  (is (= [] (q/intersperse  [] 7)))
+  (is (= [5 8 6 8 3 8 2] (q/intersperse [5 6 3 2] 8)))
+  (is (= [2 2 2 2 2] (q/intersperse [2 2 2] 2))))
+
+
+;; def check(candidate):
+;;     assert candidate([], 7) == []
+;;     assert candidate([5, 6, 3, 2], 8) == [5, 8, 6, 8, 3, 8, 2]
+;;     assert candidate([2, 2, 2], 2) == [2, 2, 2, 2, 2]

@@ -1,0 +1,15 @@
+(ns app.q006
+  (:require phel.string))
+
+(defn calc-level [parens]
+  (loop [s parens
+         level 0
+         max-level 0]
+    (if (empty? s)
+      max-level
+      (case (string/subs s 0 1)
+        "(" (recur (string/subs s 1) (inc level) (max (inc level) max-level))
+        ")" (recur (string/subs s 1) (dec level) max-level)))))
+
+(defn parse_nested_parens [str]
+  (map calc-level (string/split str "/ /")))

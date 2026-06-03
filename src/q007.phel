@@ -1,0 +1,5 @@
+(ns app.q007
+  (:require phel.string))
+
+(defn filter_by_substring [strings substring]
+  (filter #(string/contains? % substring) strings))

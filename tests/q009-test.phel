@@ -1,0 +1,17 @@
+(ns app.q009-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q009 :as q))
+
+(def candidate q/rolling_max)
+
+(deftest test-check
+  (is (= [] (candidate [])))
+  (is (= [1 2 3 4] (candidate [1 2 3 4])))
+  (is (= [4 4 4 4] (candidate [4 3 2 1])))
+  (is (= [3 3 3 100 100] (candidate [3 2 3 100 3]))))
+
+;; def check(candidate):
+;;     assert candidate([]) == []
+;;     assert candidate([1, 2, 3, 4]) == [1, 2, 3, 4]
+;;     assert candidate([4, 3, 2, 1]) == [4, 4, 4, 4]
+;;     assert candidate([3, 2, 3, 100, 3]) == [3, 3, 3, 100, 100]

@@ -1,0 +1,11 @@
+(ns app.q009
+  (:require phel.string))
+
+(defn rolling_max [numbers]
+  (loop [numbers numbers
+         m php/PHP_INT_MIN
+         acc []]
+    (if (empty? numbers)
+      acc
+      (let [max- (max m (first numbers))]
+        (recur (rest numbers) max- (conj acc max-))))))

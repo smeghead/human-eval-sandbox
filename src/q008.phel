@@ -1,0 +1,6 @@
+(ns app.q008
+  (:require phel.string))
+
+(defn sum_product [numbers]
+  [(reduce + numbers)
+   (reduce * 1 numbers)])

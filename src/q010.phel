@@ -1,0 +1,23 @@
+(ns app.q010
+  (:require phel.string))
+
+(defn make_palindrome [s]
+  (if (empty? s)
+    s
+    (let [r (string/reverse s)]
+      (if (= s r)
+        s
+        (loop [rc r]
+          (if (empty? rc)
+            (str s (string/subs r 1))
+            (let [part (string/subs rc 0 (- (count rc) 1))]
+              (if (string/ends-with? s part)
+                (str s (string/subs r (dec (count rc))))
+                (recur part)))))))))
+
+;; original xyzy
+;; answer   xyzyx
+;; reversed yzyx
+;; try      yzyx
+;; try      yzy
+

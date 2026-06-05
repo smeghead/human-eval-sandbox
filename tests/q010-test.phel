@@ -1,0 +1,20 @@
+(ns app.q010-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q010 :as q))
+
+(def candidate q/make_palindrome)
+
+(deftest test-check
+  (is (= "" (candidate "")))
+  (is (= "x" (candidate "x")))
+  (is (= "xyzyx" (candidate "xyz")))
+  (is (= "xyzyx" (candidate "xyzy")))
+  (is (= "xyx" (candidate "xyx")))
+  (is (= "jerryrrej" (candidate "jerry"))))
+
+;; def check(candidate):
+;;     assert candidate('') == ''
+;;     assert candidate('x') == 'x'
+;;     assert candidate('xyz') == 'xyzyx'
+;;     assert candidate('xyx') == 'xyx'
+;;     assert candidate('jerry') == 'jerryrrej'

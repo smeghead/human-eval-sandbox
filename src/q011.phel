@@ -1,0 +1,5 @@
+(ns app.q011
+  (:require phel.string))
+
+(defn string_xor [a b]
+  (apply str (map #(if (= %1 %2) "0" "1") (string/chars a) (string/chars b))))

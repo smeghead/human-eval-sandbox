@@ -1,0 +1,15 @@
+(ns app.q012-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q012 :as q))
+
+(def candidate q/longest)
+
+(deftest test-check
+  (is (= nil (candidate [])))
+  (is (= "x" (candidate ["x" "y" "z"])))
+  (is (= "zzzz" (candidate ["x" "yyy" "zzzz" "www" "kkkk" "abc"]))))
+
+;; def check(candidate):
+;;     assert candidate([]) == None
+;;     assert candidate(['x', 'y', 'z']) == 'x'
+;;     assert candidate(['x', 'yyy', 'zzzz', 'www', 'kkkk', 'abc']) == 'zzzz'

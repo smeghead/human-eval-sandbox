@@ -1,0 +1,7 @@
+(ns app.q012
+  (:require phel.string))
+
+(defn longest [strings]
+  (if (empty? strings)
+    nil
+    (reduce #(if (< (count %1) (count %2)) %2 %1) strings)))

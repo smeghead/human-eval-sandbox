@@ -1,0 +1,16 @@
+(ns app.q013
+  (:require phel.string))
+
+(defn greatest_common_divisor [a b]
+  (loop [m (max a b)
+         n (min a b)]
+    (if (zero? n)
+      m
+      (recur n (% m n)))))
+
+;; (defn greatest_common_divisor [a b]
+;;   (loop [current (int (/ (max a b) 2))]
+;;     (if (and (zero? (% a current))
+;;              (zero? (% b current)))
+;;       current
+;;       (recur (dec current)))))

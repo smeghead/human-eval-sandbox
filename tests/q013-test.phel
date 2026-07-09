@@ -1,0 +1,17 @@
+(ns app.q013-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q013 :as q))
+
+(def candidate q/greatest_common_divisor)
+
+(deftest test-check
+  (is (= 1 (candidate 3 7)))
+  (is (= 5 (candidate 10 15)))
+  (is (= 7 (candidate 49 14)))
+  (is (= 12 (candidate 144 60))))
+
+;; def check(candidate):
+;;     assert candidate(3, 7) == 1
+;;     assert candidate(10, 15) == 5
+;;     assert candidate(49, 14) == 7
+;;     assert candidate(144, 60) == 12

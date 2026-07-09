@@ -1,0 +1,5 @@
+(ns app.q014
+  (:require phel.string))
+
+(defn all_prefixes [s]
+  (map #(string/subs s 0 (inc %)) (range (count s))))

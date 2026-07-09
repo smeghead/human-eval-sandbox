@@ -1,0 +1,15 @@
+(ns app.q014-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q014 :as q))
+
+(def candidate q/all_prefixes)
+
+(deftest test-check
+  (is (= [] (candidate "")))
+  (is (= ["a" "as" "asd" "asdf" "asdfg" "asdfgh"] (candidate "asdfgh")))
+  (is (= ["W" "WW" "WWW"] (candidate "WWW"))))
+
+;; def check(candidate):
+;;     assert candidate('') == []
+;;     assert candidate('asdfgh') == ['a', 'as', 'asd', 'asdf', 'asdfg', 'asdfgh']
+;;     assert candidate('WWW') == ['W', 'WW', 'WWW']

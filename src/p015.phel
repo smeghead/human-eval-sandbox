@@ -1,0 +1,5 @@
+(ns app.q015
+  (:require phel.string))
+
+(defn string_sequence [n]
+  (string/join " " (range 0 (inc n))))

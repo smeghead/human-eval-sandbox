@@ -1,0 +1,8 @@
+(ns app.q016
+  (:require phel.string))
+
+(defn count_distinct_characters [s]
+  (count
+    (reduce #(if (contains-value? %1 %2)
+               %1
+               (conj %1 %2)) [] (string/chars (string/lower-case s)))))

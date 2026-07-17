@@ -1,0 +1,19 @@
+(ns app.q016-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q016 :as q))
+
+(def candidate q/count_distinct_characters)
+
+(deftest test-check
+  (is (= 0 (candidate "")))
+  (is (= 5 (candidate "abcde")))
+  (is (= 5 (candidate "abcdecadeCADE")))
+  (is (= 1 (candidate "aaaaAAAAaaaa")))
+  (is (= 5 (candidate "Jerry jERRY JeRRRY"))))
+
+;; def check(candidate):
+;;     assert candidate('') == 0
+;;     assert candidate('abcde') == 5
+;;     assert candidate('abcde' + 'cade' + 'CADE') == 5
+;;     assert candidate('aaaaAAAAaaaa') == 1
+;;     assert candidate('Jerry jERRY JeRRRY') == 5

@@ -1,0 +1,15 @@
+(ns app.q015-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q015 :as q))
+
+(def candidate q/string_sequence)
+
+(deftest test-check
+  (is (= "0" (candidate 0)))
+  (is (= "0 1 2 3" (candidate 3)))
+  (is (= "0 1 2 3 4 5 6 7 8 9 10" (candidate 10))))
+
+;; def check(candidate):
+;;     assert candidate(0) == '0'
+;;     assert candidate(3) == '0 1 2 3'
+;;     assert candidate(10) == '0 1 2 3 4 5 6 7 8 9 10'

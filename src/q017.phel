@@ -1,0 +1,9 @@
+(ns app.q017
+  (:require phel.string))
+
+(defn parse_music [s]
+  (let [notes (if (empty? s) [] (string/split s "/\s+/"))]
+    (map #(case %
+            "o" 4
+            "o|" 2
+            ".|" 1) notes)))

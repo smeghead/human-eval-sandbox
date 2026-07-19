@@ -1,0 +1,19 @@
+(ns app.q017-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q017 :as q))
+
+(def candidate q/parse_music)
+
+(deftest test-check
+  (is (= [] (candidate "")))
+  (is (= [4 4 4 4] (candidate "o o o o")))
+  (is (= [1 1 1 1] (candidate ".| .| .| .|")))
+  (is (= [2 2 1 1 4 4 4 4] (candidate "o| o| .| .| o o o o")))
+  (is (= [2 1 2 1 4 2 4 2] (candidate "o| .| o| .| o o| o o|"))))
+
+;; def check(candidate):
+;;     assert candidate('') == []
+;;     assert candidate('o o o o') == [4, 4, 4, 4]
+;;     assert candidate('.| .| .| .|') == [1, 1, 1, 1]
+;;     assert candidate('o| o| .| .| o o o o') == [2, 2, 1, 1, 4, 4, 4, 4]
+;;     assert candidate('o| .| o| .| o o| o o|') == [2, 1, 2, 1, 4, 2, 4, 2]

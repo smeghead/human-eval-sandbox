@@ -9,7 +9,11 @@
   (is (= 0 (candidate "b" "a")))
   (is (= 3 (candidate "aaa" "a")))
   (is (= 2 (candidate "aba" "a")))
-  (is (= 3 (candidate "aaaa" "aa"))))
+  (is (= 3 (candidate "aaaa" "aa")))
+  (is (= 0 (candidate "" "x")))
+  (is (= 4 (candidate "xyxyxyx" "x")))
+  (is (= 4 (candidate "cacacacac" "cac")))
+  (is (= 1 (candidate "john doe" "john"))))
 
 # def how_many_times(string: str, substring: str) -> int:
 #     """ Find how many times a given substring can be found in the original string. Count overlaping cases.
@@ -20,3 +24,8 @@
 #     >>> how_many_times('aaaa', 'aa')
 #     3
 #     """
+# def check(candidate):
+#     assert candidate('', 'x') == 0
+#     assert candidate('xyxyxyx', 'x') == 4
+#     assert candidate('cacacacac', 'cac') == 4
+#     assert candidate('john doe', 'john') == 1

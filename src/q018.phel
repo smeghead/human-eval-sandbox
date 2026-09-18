@@ -1,0 +1,11 @@
+(ns app.q018
+  (:require phel.string))
+
+(defn how_many_times [str substr]
+  (loop [s str
+         count 0]
+    (if (empty? s)
+      count
+      (recur (string/subs s 1) (if (string/starts-with? s substr)
+                              (inc count)
+                              count)))))

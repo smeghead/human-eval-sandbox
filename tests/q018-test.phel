@@ -1,0 +1,22 @@
+(ns app.q018-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q018 :as q))
+
+(def candidate q/how_many_times)
+
+(deftest test-check
+  (is (= 0 (candidate "" "a")))
+  (is (= 0 (candidate "b" "a")))
+  (is (= 3 (candidate "aaa" "a")))
+  (is (= 2 (candidate "aba" "a")))
+  (is (= 3 (candidate "aaaa" "aa"))))
+
+# def how_many_times(string: str, substring: str) -> int:
+#     """ Find how many times a given substring can be found in the original string. Count overlaping cases.
+#     >>> how_many_times('', 'a')
+#     0
+#     >>> how_many_times('aaa', 'a')
+#     3
+#     >>> how_many_times('aaaa', 'aa')
+#     3
+#     """

@@ -1,0 +1,15 @@
+(ns app.q019
+  (:require phel.string))
+
+(def- numbers ["zero" "one" "two" "three" "four" "five" "six" "seven" "eight" "nine"])
+
+(defn- number-as [s]
+  (loop [i 0]
+    (if (> i 9)
+      nil
+      (if (= s (numbers i))
+        i
+        (recur (inc i))))))
+
+(defn sort_numbers [numbers]
+  (string/join " " (sort #(compare (number-as %1) (number-as %2)) (string/split numbers "/\\s+/"))))

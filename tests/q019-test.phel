@@ -1,0 +1,19 @@
+(ns app.q019-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q019 :as q))
+
+(def candidate q/sort_numbers)
+
+(deftest test-check
+  (is (= "" (candidate "")))
+  (is (= "three" (candidate "three")))
+  (is (= "three five nine" (candidate "three five nine")))
+  (is (= "zero four five seven eight nine" (candidate "five zero four seven nine eight")))
+  (is (= "zero one two three four five six" (candidate "six five four three two one zero"))))
+
+# def check(candidate):
+#     assert candidate('') == ''
+#     assert candidate('three') == 'three'
+#     assert candidate('three five nine') == 'three five nine'
+#     assert candidate('five zero four seven nine eight') == 'zero four five seven eight nine'
+#     assert candidate('six five four three two one zero') == 'zero one two three four five six'

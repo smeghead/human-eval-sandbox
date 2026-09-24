@@ -1,0 +1,11 @@
+(ns app.q020
+  (:require phel.string))
+
+(defn find_closest_elements [numbers]
+  (loop [[fst snd & rst] (sort numbers)
+         acc [php/PHP_INT_MIN php/PHP_INT_MAX]]
+    (if (empty? snd)
+      acc
+      (recur (cons snd rst) (if (> (- (second acc) (first acc)) (- snd fst))
+                               [fst snd]
+                               acc)))))

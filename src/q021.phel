@@ -1,0 +1,13 @@
+(ns app.q021
+  (:require phel.string))
+
+(defn rescale_to_unit [numbers]
+  (let [sorted (sort numbers)
+        min (first sorted)
+        max (last sorted)]
+    (loop [[n & rest] numbers
+           acc []]
+      (if (empty? n)
+        acc
+        (recur rest (conj acc (/ (- n min) (- max min))))))))
+

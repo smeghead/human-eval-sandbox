@@ -1,0 +1,15 @@
+(ns app.q022-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q022 :as q))
+
+(def candidate q/filter_integers)
+
+(deftest test-check
+  (is (= [] (candidate [])))
+  (is (= [4 9] (candidate [4 {} [] 23.2 9 "adasd"])))
+  (is (= [3 3 3] (candidate [3 "c" 3 3 "a" "b"]))))
+
+# def check(candidate):
+#     assert candidate([]) == []
+#     assert candidate([4, {}, [], 23.2, 9, 'adasd']) == [4, 9]
+#     assert candidate([3, 'c', 3, 3, 'a', 'b']) == [3, 3, 3]

@@ -1,0 +1,11 @@
+(ns app.q024
+  (:require phel.string))
+
+(defn largest_divisor [n]
+  (loop [d (dec n)]
+    (if (< d 1)
+      d
+      (if (zero? (% n d))
+        d
+        (recur (dec d))))))
+

@@ -1,0 +1,19 @@
+(ns app.q024-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q024 :as q))
+
+(def candidate q/largest_divisor)
+
+(deftest test-check
+  (is (= 1 (candidate 3)))
+  (is (= 1 (candidate 7)))
+  (is (= 5 (candidate 10)))
+  (is (= 50 (candidate 100)))
+  (is (= 7 (candidate 49))))
+
+# def check(candidate):
+#     assert candidate(3) == 1
+#     assert candidate(7) == 1
+#     assert candidate(10) == 5
+#     assert candidate(100) == 50
+#     assert candidate(49) == 7

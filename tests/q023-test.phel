@@ -1,0 +1,15 @@
+(ns app.q023-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q023 :as q))
+
+(def candidate q/strlen)
+
+(deftest test-check
+  (is (= 0 (candidate "")))
+  (is (= 1 (candidate "x")))
+  (is (= 9 (candidate "asdasnakj"))))
+
+# def check(candidate):
+#     assert candidate('') == 0
+#     assert candidate('x') == 1
+#     assert candidate('asdasnakj') == 9

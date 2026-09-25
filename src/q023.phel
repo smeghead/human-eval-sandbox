@@ -1,0 +1,6 @@
+(ns app.q023
+  (:require phel.string))
+
+(defn strlen [s]
+  (count s))
+

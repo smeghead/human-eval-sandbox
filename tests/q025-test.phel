@@ -1,0 +1,54 @@
+(ns app.q025-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q025 :as q))
+
+(def candidate q/factorize)
+
+(deftest test-is-prime
+  (is (= true (q/is-prime 2)))
+  (is (= true (q/is-prime 3)))
+  (is (= false (q/is-prime 4)))
+  (is (= true (q/is-prime 5)))
+  (is (= false (q/is-prime 6)))
+  (is (= true (q/is-prime 7)))
+  (is (= false (q/is-prime 8)))
+  (is (= false (q/is-prime 9)))
+  (is (= false (q/is-prime 10)))
+  (is (= true (q/is-prime 11))))
+
+ (deftest test-prime-generator
+   (let [g (q/prime-generator)]
+     (is (= 2 (g)))
+     (is (= 3 (g)))
+     (is (= 5 (g)))
+     (is (= 7 (g)))
+     (is (= 11 (g)))
+     (is (= 13 (g)))
+     (is (= 17 (g)))
+     (is (= 19 (g)))
+     (is (= 23 (g)))
+     (is (= 29 (g)))
+     (is (= 31 (g)))
+     (is (= 37 (g)))
+     (is (= 41 (g)))))
+# 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41
+
+ (deftest test-check
+   (is (= [2] (candidate 2)))
+   (is (= [2, 2] (candidate 4)))
+   (is (= [2, 2, 2] (candidate 8)))
+   (is (= [3, 19] (candidate (* 3 19))))
+   (is (= [3, 3, 19, 19] (candidate (* 3 19 3 19))))
+   (is (= [3, 3, 3, 19, 19, 19] (candidate (* 3 19 3 19 3 19))))
+   (is (= [3, 19, 19, 19] (candidate (* 3 19 19 19))))
+   (is (= [2, 3, 3] (candidate (* 3 2 3)))))
+
+# def check(candidate):
+#     assert candidate(2) == [2]
+#     assert candidate(4) == [2, 2]
+#     assert candidate(8) == [2, 2, 2]
+#     assert candidate(3 * 19) == [3, 19]
+#     assert candidate(3 * 19 * 3 * 19) == [3, 3, 19, 19]
+#     assert candidate(3 * 19 * 3 * 19 * 3 * 19) == [3, 3, 3, 19, 19, 19]
+#     assert candidate(3 * 19 * 19 * 19) == [3, 19, 19, 19]
+#     assert candidate(3 * 2 * 3) == [2, 3, 3]

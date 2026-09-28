@@ -1,0 +1,39 @@
+(ns app.q025
+  (:require phel.string))
+
+(defn is-prime [n]
+  (loop [i (- n 1)]
+    (if (< i 2)
+      true
+      (if (zero? (% n i))
+        false
+        (recur (dec i))))))
+
+(defn prime-generator []
+  (let [n (atom 2)]
+    (fn []
+      (loop []
+        (if (is-prime @n)
+          (let [v @n]
+            (swap! n inc)
+            v)
+          (do
+            (swap! n inc)
+            (recur)))))))
+
+(defn find-devidor [n]
+  (let [gen (prime-generator)]
+    (loop [p (gen)]
+      (if (< n 2)
+        nil
+        (if (zero? (% n p))
+          p
+          (recur (gen)))))))
+
+(defn factorize [n]
+  (loop [n n
+         acc []]
+    (let [p (find-devidor n)]
+      (if (nil? p)
+        acc
+        (recur (/ n p) (conj acc p))))))

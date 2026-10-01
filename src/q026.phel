@@ -1,0 +1,16 @@
+(ns app.q026
+  (:require phel.string))
+
+(defn count-present [numbers]
+  (loop [numbers numbers
+         acc {}]
+    (if (empty? numbers)
+      acc
+      (let [[first-value & rest] numbers]
+      (recur rest (assoc acc first-value (if (contains? acc first-value)
+                                           (inc (acc first-value))
+                                           1)))))))
+
+(defn remove_duplicates [numbers]
+  (let [counts (count-present numbers)]
+    (filter #(= (counts %) 1) numbers)))

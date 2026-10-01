@@ -1,0 +1,15 @@
+(ns app.q026-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q026 :as q))
+
+(def candidate q/remove_duplicates)
+
+(deftest test-check
+  (is (= [] (candidate [])))
+  (is (= [1 2 3 4] (candidate [1 2 3 4])))
+  (is (= [1 4 5] (candidate [1 2 3 2 4 3 5]))))
+
+# def check(candidate):
+#     assert candidate([]) == []
+#     assert candidate([1, 2, 3, 4]) == [1, 2, 3, 4]
+#     assert candidate([1, 2, 3, 2, 4, 3, 5]) == [1, 4, 5]

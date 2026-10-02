@@ -1,0 +1,15 @@
+(ns app.q028-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q028 :as q))
+
+(def candidate q/concatenate)
+
+(deftest test-check
+  (is (= "" (candidate [])))
+  (is (= "xyz" (candidate ["x" "y" "z"])))
+  (is (= "xyzwk" (candidate ["x" "y" "z" "w" "k"]))))
+
+# def check(candidate):
+#     assert candidate([]) == ''
+#     assert candidate(['x', 'y', 'z']) == 'xyz'
+#     assert candidate(['x', 'y', 'z', 'w', 'k']) == 'xyzwk'

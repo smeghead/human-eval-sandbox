@@ -1,0 +1,10 @@
+(ns app.q028
+  (:require phel.string))
+
+(defn concatenate [chars]
+  (loop [chars chars
+         acc ""]
+    (if (empty? chars)
+      acc
+      (recur (rest chars) (str acc (first chars))))))
+

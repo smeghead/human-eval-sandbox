@@ -1,0 +1,16 @@
+(ns app.q027
+  (:require phel.string))
+
+(defn flip_case [str]
+  (loop [chars (string/chars str)
+         acc []]
+    (if (empty? chars)
+      (string/join "" acc)
+      (let [[first-char & rest] chars
+             lower (string/lower-case first-char)
+             upper (string/upper-case first-char)]
+        (recur rest (conj acc (cond
+                                (= lower upper) first-char
+                                (= first-char upper) lower
+                                upper)))))))
+

@@ -1,0 +1,15 @@
+(ns app.q027-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q027 :as q))
+
+(def candidate q/flip_case)
+
+(deftest test-check
+  (is (= "" (candidate "")))
+  (is (= "hELLO!" (candidate "Hello!")))
+  (is (= "tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS" (candidate "These violent delights have violent ends"))))
+
+# def check(candidate):
+#     assert candidate('') == ''
+#     assert candidate('Hello!') == 'hELLO!'
+#     assert candidate('These violent delights have violent ends') == 'tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS'

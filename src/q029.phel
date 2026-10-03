@@ -1,0 +1,6 @@
+(ns app.q029
+  (:require phel.string))
+
+(defn filter_by_prefix [strs prefix]
+  (filter #(string/starts-with? % prefix) strs))
+

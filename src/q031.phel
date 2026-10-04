@@ -1,0 +1,12 @@
+(ns app.q031
+  (:require phel.string))
+
+(defn is_prime [n]
+  (if (< n 2)
+    false
+    (loop [i (- n 1)]
+      (if (< i 2)
+        true
+        (if (zero? (% n i))
+          false
+          (recur (dec i)))))))

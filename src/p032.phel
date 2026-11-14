@@ -1,0 +1,17 @@
+(ns app.q032
+  (:require phel.string))
+
+(defn poly [numbers v]
+  (loop [numbers numbers
+         i 0
+         acc []]
+    (if (empty? numbers)
+      (sum acc)
+      (recur
+        (rest numbers)
+        (inc i)
+        (conj acc (* (first numbers) (php/pow v i)))))))
+
+
+(defn find_zero [numbers]
+)

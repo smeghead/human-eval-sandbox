@@ -9,6 +9,10 @@
   (is (= (+ 1 (* 2 2)) (q/poly [1 2] 2)))
   (is (= (+ 1 (* 1 2) (* 1 4)) (q/poly [1 1 1] 2))))
 
+(deftest test-divisors
+  (is (= [1 2 4] (q/divisors 4)))
+  (is (= [1 2 3 4 6 12] (q/divisors 12))))
+
 # (deftest test-check
 #   (is (= -0.5 (php/round (candidate [1 2]) 1)))
 #   (is (= 1.0 (php/round (candidate [-6 11 -6  1]) 1))))

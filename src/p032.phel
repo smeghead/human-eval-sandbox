@@ -12,6 +12,14 @@
         (inc i)
         (conj acc (* (first numbers) (php/pow v i)))))))
 
+(defn divisors [n]
+  (loop [v n
+         acc []]
+    (if (<= v 0)
+      (reverse acc)
+      (recur (dec v) (if (zero? (% n v))
+                       (conj acc v)
+                       acc)))))
 
 (defn find_zero [numbers]
 )

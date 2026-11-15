@@ -13,7 +13,7 @@
         (conj acc (* (first numbers) (php/pow v i)))))))
 
 (defn divisors [n]
-  (loop [v n
+  (loop [v (float n)
          acc []]
     (if (<= v 0)
       (reverse acc)
@@ -21,5 +21,22 @@
                        (conj acc v)
                        acc)))))
 
+(defn find-first [pred coll]
+  (loop [items coll]
+    (if (empty? items)
+      nil
+      (if (pred (first items))
+        (first items)          ; 判定が真なら、元の要素を返す
+        (recur (rest items))))))
+
 (defn find_zero [numbers]
-)
+  (let [candidates (divisors (abs (/ (first numbers) (last numbers))))]
+    (loop [cands candidates]
+      (if (empty? cands)
+        nil
+        (let [c (first cands)
+              answer (find-first #(zero? (poly numbers %)) [c (* c -1)])]
+          (if (not (nil? answer))
+            answer
+            (recur (rest cands))))))))
+

@@ -1,25 +1,37 @@
 (ns app.q032
   (:require phel.string))
 
-(defn poly [numbers v]
-  (loop [numbers numbers
-         i 0
-         acc []]
-    (if (empty? numbers)
-      (sum acc)
-      (recur
-        (rest numbers)
-        (inc i)
-        (conj acc (* (first numbers) (php/pow v i)))))))
+(defn poly [xs x]
+  (reduce + 0 (map-indexed #(* %2 (php/pow x %1)) xs)))
+
+# (defn poly [numbers v]
+# (println "poly" numbers v)
+#   (loop [numbers numbers
+#          i 0
+#          acc []]
+#     (if (empty? numbers)
+#       (do
+#         (println "poly result" (sum acc))
+#         (sum acc))
+#       (recur
+#         (rest numbers)
+#         (inc i)
+#         (conj acc (* (first numbers) (php/pow v i)))))))
 
 (defn divisors [n]
-  (loop [v (float n)
+  (loop [v (abs (float n))
          acc []]
     (if (<= v 0)
       (reverse acc)
       (recur (dec v) (if (zero? (% n v))
                        (conj acc v)
                        acc)))))
+
+(defn divisors-pairs [a b]
+  (let [candidates (for [divisor-a :in (divisors a)
+                         divisor-b :in (divisors b)]
+                     (abs (/ divisor-b divisor-a)))]
+    (sort (apply vector (set candidates)))))
 
 (defn find-first [pred coll]
   (loop [items coll]
@@ -30,8 +42,10 @@
         (recur (rest items))))))
 
 (defn find_zero [numbers]
-  (let [candidates (divisors (abs (/ (first numbers) (last numbers))))]
+(println "find_zero" numbers)
+  (let [candidates (divisors-pairs (last numbers) (first numbers))]
     (loop [cands candidates]
+(println "cands" cands)
       (if (empty? cands)
         nil
         (let [c (first cands)

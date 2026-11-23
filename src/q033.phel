@@ -1,0 +1,15 @@
+(ns app.q033
+  (:require phel.string))
+
+(defstruct direct-cell [n])
+(defstruct sort-cell [n])
+
+(defn sort_third [xs]
+  (let [cells (map-indexed #(if (zero? (rem %1 3))
+                      (sort-cell %2)
+                      (direct-cell %2)) xs)
+        sort-values (sort (map #(% :n) (filter #(sort-cell? %) cells)))]
+    (map-indexed #(if (sort-cell? %2)
+                    (sort-values (/ %1 3))
+                    (%2 :n))
+                 cells)))

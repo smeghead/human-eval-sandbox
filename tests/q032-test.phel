@@ -9,14 +9,14 @@
 #   (is (= (+ 1 (* 2 2)) (q/poly [1 2] 2)))
 #   (is (= (+ 1 (* 1 2) (* 1 4)) (q/poly [1 1 1] 2))))
 # 
-# (deftest test-divisors
-#   (is (= [1.0 2.0 4.0] (q/divisors 4)))
-#   (is (= [1.0 2.0 3.0 4.0 6.0 12.0] (q/divisors 12)))
-#   (is (= [0.5] (q/divisors 1/2))))
+(deftest test-divisors
+  (is (= [1.0 2.0 4.0] (q/divisors 4)))
+  (is (= [1.0 2.0 3.0 4.0 6.0 12.0] (q/divisors 12)))
+  (is (= [0.5] (q/divisors 1/2))))
 
-# (deftest test-divisors-pairs
-#   (is (= [1.0 2.0 4.0] (q/divisors-pairs 1 4)))
-#   (is (= [0.5 1.0 2.0 4.0] (q/divisors-pairs 2 4))))
+(deftest test-divisors-pairs
+  (is (= [1.0 2.0 4.0] (q/divisors-pairs 1 4)))
+  (is (= [0.5 1.0 2.0 4.0] (q/divisors-pairs 2 4))))
 
 
 (deftest test-check
@@ -29,14 +29,15 @@
       (let [c (php/mt_rand -10 10)]
         (if (= c 0) 1 c)))))
 
-(deftest test-program
+# (deftest test-program
 #   (php/mt_srand 42)
 #   (dotimes [_ 100]
 #     (let [coeffs   (random-coeffs)
 #           solution (candidate coeffs)]
 #       (is (< (php/abs (q/poly coeffs solution)) 1e-4)))))
 
- (dotimes [_ 10]
+(deftest test-program1
+ (dotimes [_ 100]
    (let [ncoeff (* 2 (inc (rand-int 4)))
          coeffs (for [_ :range [0 ncoeff]]
                   (let [coeff (- (rand-int 21) 10)]

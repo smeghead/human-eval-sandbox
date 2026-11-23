@@ -2,7 +2,7 @@
   (:require phel.string))
 
 (defn poly [xs x]
-  (reduce + 0 (map-indexed #(* %2 (php/pow x %1)) xs)))
+  (reduce + 0 (map-indexed #(* %2 (php/pow (float x) %1)) xs)))
 
 # (defn poly [numbers v]
 # (println "poly" numbers v)
@@ -41,16 +41,29 @@
         (first items)          ; 判定が真なら、元の要素を返す
         (recur (rest items))))))
 
-(defn find_zero [numbers]
-(println "find_zero" numbers)
-  (let [candidates (divisors-pairs (last numbers) (first numbers))]
-    (loop [cands candidates]
-(println "cands" cands)
-      (if (empty? cands)
-        nil
-        (let [c (first cands)
-              answer (find-first #(zero? (poly numbers %)) [c (* c -1)])]
-          (if (not (nil? answer))
-            answer
-            (recur (rest cands))))))))
+# (defn find_zero [numbers]
+#   (let [candidates (divisors-pairs (last numbers) (first numbers))]
+#     (loop [cands candidates]
+#       (if (empty? cands)
+#         nil
+#         (let [c (first cands)
+#               answer (find-first #(< (abs (poly numbers %)) 1e-4) [c (* c -1)])]
+# #              answer (find-first #(zero? (poly numbers %)) [c (* c -1)])]
+# 
+#           (if (not (nil? answer))
+#             answer
+#             (recur (rest cands))))))))
 
+(defn find_zero [xs]
+  (let [lead  (last xs)
+        init  (take (dec (count xs)) xs)
+        bound (+ 1 (apply max (map (fn [c] (abs (/ c lead))) init)))]
+    (loop [lo (- bound)
+           hi bound
+           i 0]
+      (let [mid (/ (+ lo hi) 2)]
+        (if (>= i 50)
+          (float mid)
+          (if (<= (* (poly xs lo) (poly xs mid)) 0)
+            (recur lo mid (inc i))
+            (recur mid hi (inc i))))))))

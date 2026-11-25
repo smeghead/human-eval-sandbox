@@ -1,0 +1,11 @@
+(ns app.q034
+  (:require phel.string))
+
+(defn unique [xs]
+  (let [xs (sort xs)]
+    (reduce (fn [acc x]
+              (if (= (last acc) x)
+               acc
+               (conj acc x)))
+            []
+            xs)))

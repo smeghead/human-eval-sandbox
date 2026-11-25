@@ -1,0 +1,11 @@
+(ns app.q034-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q034 :as q))
+
+(def candidate q/unique)
+
+(deftest test-check
+  (is (= [0 2 3 5 9 123] (candidate [5 3 5 2 3 3 9 0 123]))))
+
+# def check(candidate):
+#     assert candidate([5, 3, 5, 2, 3, 3, 9, 0, 123]) == [0, 2, 3, 5, 9, 123]

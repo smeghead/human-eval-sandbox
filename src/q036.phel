@@ -1,0 +1,9 @@
+(ns app.q036
+  (:require phel.string))
+
+(defn fizz_buzz [n]
+  (let [xs (filter #(or (zero? (rem % 11))
+                        (zero? (rem % 13))) (range 1 n))
+        count7 (fn [s]
+                 (reduce #(+ %1 (if (= %2 "7") 1 0)) 0 (string/chars s)))]
+    (reduce #(+ %1 (count7 %2)) 0 xs)))

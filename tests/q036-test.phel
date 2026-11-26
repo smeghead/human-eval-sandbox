@@ -1,0 +1,25 @@
+(ns app.q036-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q036 :as q))
+
+(def candidate q/fizz_buzz)
+
+(deftest test-check
+  (is (= 0 (candidate 50)))
+  (is (= 2 (candidate 78)))
+  (is (= 3 (candidate 79)))
+  (is (= 3 (candidate 100)))
+  (is (= 6 (candidate 200)))
+  (is (= 192 (candidate 4000)))
+  (is (= 639 (candidate 10000)))
+  (is (= 8026 (candidate 100000))))
+
+# def check(candidate):
+#     assert candidate(50) == 0
+#     assert candidate(78) == 2
+#     assert candidate(79) == 3
+#     assert candidate(100) == 3
+#     assert candidate(200) == 6
+#     assert candidate(4000) == 192
+#     assert candidate(10000) == 639
+#     assert candidate(100000) == 8026

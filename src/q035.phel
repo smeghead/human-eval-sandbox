@@ -1,0 +1,7 @@
+(ns app.q035
+  (:require phel.string))
+
+(defn max_element [xs]
+  (reduce max
+          php/PHP_INT_MIN
+          xs))

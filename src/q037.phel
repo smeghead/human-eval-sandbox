@@ -1,0 +1,9 @@
+(ns app.q037
+  (:require phel.string))
+
+(defn sort_even [xs]
+  (let [evens (sort (map first (partition-all 2 xs)))]
+    (map-indexed #(if (even? %1)
+                    (evens (/ %1 2))
+                    %2)
+                 xs)))

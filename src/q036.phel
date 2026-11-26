@@ -6,4 +6,4 @@
                         (zero? (rem % 13))) (range 1 n))
         count7 (fn [s]
                  (reduce #(+ %1 (if (= %2 "7") 1 0)) 0 (string/chars s)))]
-    (reduce #(+ %1 (count7 %2)) 0 xs)))
+    (sum (map count7 xs))))

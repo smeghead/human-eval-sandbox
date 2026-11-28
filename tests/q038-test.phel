@@ -1,0 +1,17 @@
+(ns app.q038-test
+  (:require phel.test :refer [deftest is])
+  (:require app.q038 :as q))
+
+(def candidate q/decode_cyclic)
+
+(deftest test-encode_cyclic
+  (is (= "bca" (q/encode_cyclic "abc")))
+  (is (= "bcade" (q/encode_cyclic "abcde")))
+  (is (= "bcaefd" (q/encode_cyclic "abcdef"))))
+
+(def letters "abcdefghijklmnopqrstuvwxyz")
+
+(deftest test-check
+  (dotimes [_ 100]
+    (let [s (map #(get letters (rand-int (count letters))) (range 10 (+ 10 (rand-int 10))))]
+      (is s (candidate (q/encode_cyclic s))))))

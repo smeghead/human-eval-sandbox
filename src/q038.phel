@@ -1,0 +1,12 @@
+(ns app.q038
+  (:require phel.string))
+
+(defn encode_cyclic [s]
+  (let [groups (partition-all 3 s)]
+    (apply str (map #(if (= (count %) 3)
+                      (str (% 1) (% 2) (% 0))
+                      (apply str %))
+                    groups)))) 
+
+(defn decode_cyclic [s]
+  )

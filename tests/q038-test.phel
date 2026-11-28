@@ -14,5 +14,4 @@
 (deftest test-check
   (dotimes [_ 100]
     (let [s (apply str (map #(get letters (rand-int (count letters))) (range (+ 10 (rand-int 10)))))]
-(println s)
       (is s (candidate (q/encode_cyclic s))))))
